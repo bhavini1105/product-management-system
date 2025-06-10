@@ -76,10 +76,10 @@ function ProductList({ handleDelete, handleEdit, productList }) {
 
   return (
     
-    <div className="container ">
+    <div style={{fontSize:'20px'}}>
       <Header/>
     <SidebarComponent/>
-     <div className="mt-5">
+     <div className="mt-5 w-75 mx-auto">
       <div className="w-75 mx-auto">
        <h2 className="mb-3">Product List</h2>
       <div className="d-flex justify-content-end align-items-center mb-3">
@@ -93,7 +93,7 @@ function ProductList({ handleDelete, handleEdit, productList }) {
         />
       </div>
 
-      <DataTable
+      <DataTable 
         title="All Products"
         columns={columns}
         data={filteredProducts}

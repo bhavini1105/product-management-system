@@ -7,10 +7,11 @@ function Form({ handleChange, handleSubmit, productData, error, imgRef }) {
     <>
     <Header/>
     <SidebarComponent/>
-      <div className="container mt-5 ">
-        <div className="w-50 mx-auto">
-          <h2 className="text-center mb-4">Add / Edit Product</h2>
-        <form onSubmit={handleSubmit}>
+      <div className="mt-5" >
+        <div className="container " style={{margin:'100px'}}>
+        <div className="w-50 mx-auto " style={{fontSize:'20px'}}>
+          <h2 className="text-center mb-4" style={{margine:'30px'}}>Add / Edit Product</h2>
+        <form onSubmit={handleSubmit} >
           <div className="row">
 
             {/* Product Name */}
@@ -112,6 +113,7 @@ function Form({ handleChange, handleSubmit, productData, error, imgRef }) {
           </div>
         </form>
         </div>
+      </div>
       </div>
     </>
   );

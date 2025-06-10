@@ -1,9 +1,19 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import "../../App.css";
 
 function Home() {
+
+  const productRef = useRef();
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+
+  const [textFilter, setTextFilter] = useState("");
+
+  const filteredProducts = products.filter((product) =>
+  (product.title || "").toLowerCase().includes(textFilter.toLowerCase()) ||
+  String(product.price).includes(textFilter)
+);
 
   const URL = "https://api.escuelajs.co/api/v1/products";
 
@@ -22,33 +32,34 @@ function Home() {
 
   return (
     <>
-      {/* Navbar (simple) */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary text-white">
-        <div className="container">
-          <a className="navbar-brand text-white" href="/">Flipkart Demo</a>
-           <div className="collapse navbar-collapse justify-content-end " id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item text-white">
-                <a className="nav-link active" href="#">Home</a>
-              </li>
-              <li className="nav-item text-white">
-                <a className="nav-link" href="#">Products</a>
-              </li>
-              <li className="nav-item text-white">
-                <a className="nav-link" href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <div className="ms-auto text-white">
-            Cart Items: {cartItems.length}
+
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid px-4">
+          <a className="navbar-brand fw-bold text-primary" href="#">Flipkart <span className="text-warning">Explore Plus</span></a>
+          <form className="d-flex mx-auto">
+            <input
+              className="form-control search-box"
+              type="search"
+              value={textFilter}
+              onChange={(e) => setTextFilter(e.target.value)}
+              placeholder="Search for Products, Brands and More"
+              aria-label="Search"
+            />
+
+          </form>
+          <div>
+            <a href="#" className="me-4 text-dark text-decoration-none">Login</a>
+            <a href="#" className="me-4 text-dark text-decoration-none">Cart</a>
+            <a href="#" className="text-dark text-decoration-none">Become a Seller</a>
           </div>
         </div>
       </nav>
 
-      {/* Products Grid */}
+
+
       <div className="container mt-4">
         <div className="row">
-          {products.slice(0, 21).map((product) => (
+          {filteredProducts.slice(0, 21).map((product) => (
             <div className="col-md-3 mb-4" key={product.id}>
               <div className="card h-100 shadow-sm">
                 <img
@@ -63,7 +74,7 @@ function Home() {
                     {product.description}
                   </p>
                   <p className="card-text fw-bold text-success">${product.price}</p>
-                  <button 
+                  <button
                     className="btn btn-warning mt-auto"
                     onClick={() => addToCart(product)}
                   >
