@@ -17,7 +17,9 @@ function App() {
   const [productList, setProductList] = useState([]);
   const [editId, setEditId] = useState("");
   const [error, setError] = useState({});
+  const [cartItems, setCartItems] = useState([]);
   const imgRef = useRef();
+
 
   const navigate = useNavigate()
 
@@ -107,8 +109,15 @@ function App() {
       <Routes>
 
         <Route path='/'
-          element={<Home />}
+          element={
+            <Home
+              productList={productList}
+              cartItems={cartItems}        
+              setCartItems={setCartItems}
+            />
+          }
         />
+
 
         <Route path='/dashboard'
           element={<AdminPanel />}
