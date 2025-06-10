@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
    "dev:react": "vite",               
-    "dev:json": "npx json-server --watch db.json --port 5001",             
+    "dev:json": "npx json-server --watch db.json --port 3000",             
     "dev": "concurrently \"npm run dev:react\" \"npm run dev:json\"",
     "build": "vite build",
     "lint": "eslint .",
