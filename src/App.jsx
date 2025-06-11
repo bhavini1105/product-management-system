@@ -11,7 +11,7 @@ import SidebarComponent from './assets/Pages/SidebarComponent'
 
 function App() {
 
-  let URL = "http://localhost:3000/product"
+  let URL = "http://localhost:5001/product"
 
   const [productData, setProductData] = useState({});
   const [productList, setProductList] = useState([]);
