@@ -7,6 +7,7 @@ import axios from 'axios'
 import ProductList from './Components/ProductList'
 import Header from './assets/Pages/Header'
 import SidebarComponent from './assets/Pages/SidebarComponent'
+import Login from './assets/Pages/Login'
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const [error, setError] = useState({});
   const [cartItems, setCartItems] = useState([]);
   const imgRef = useRef();
-
+const[loginData , setLoginData] = useState([]);
 
   const navigate = useNavigate()
 
@@ -88,6 +89,11 @@ function App() {
 
   }
 
+  const handleLoginSubmit =(e)=>{
+    e.preventDefault();
+    setLoginData({});
+    navigate('/dashboard');
+  }
   const handleDelete = async (id) => {
     await axios.delete(`${URL}/${id}`);
     handleFetch();
@@ -122,6 +128,19 @@ function App() {
         <Route path='/dashboard'
           element={<AdminPanel />}
         />
+
+        <Route path='/login'
+        element={ <Login 
+          handleLoginSubmit={handleLoginSubmit}
+        /> }
+        />
+
+        <Route path='/logout'
+        element= {<Home
+         productList={productList}
+              cartItems={cartItems}        
+              setCartItems={setCartItems}
+        />}/>
 
         <Route path='/form'
           element={<Form

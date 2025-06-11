@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 function Header() {
     return (
@@ -25,6 +26,9 @@ function Header() {
                             </li>
                             <li>
                                 <a className="profile-pic" href="#"> <img src="plugins/images/users/varun.jpg" alt="user-img" width={36} className="img-circle" /><b className="hidden-xs">Steave</b></a>
+                            </li>
+                            <li>
+                                <button className='btn btn-outline-primary mt-3 '><Link to="/logout" style={{fontSize:'18px',color :'white'}}>Logout</Link></button>
                             </li>
                         </ul>
                     </div>

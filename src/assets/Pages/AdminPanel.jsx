@@ -95,7 +95,7 @@ function AdminPanel() {
                                         <li>
                                             <h5><i className="fa fa-circle m-r-5 text-inverse" />Windows</h5> </li>
                                     </ul>
-                                    <div id="ct-visits" style={{ height: 405 }} />
+                                    <div id="ct-visits" style={{ height: 20 }} />
                                 </div>
                             </div>
                         </div>

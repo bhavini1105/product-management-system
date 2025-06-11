@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../../App.css";
+import { Link } from 'react-router';
 
 function Home({ productList = [], cartItems = [], setCartItems }) {
   const [textFilter, setTextFilter] = useState("");
@@ -51,9 +52,10 @@ function Home({ productList = [], cartItems = [], setCartItems }) {
               onChange={(e) => setTextFilter(e.target.value)}
             />
           </form>
-          <button className="btn btn-outline-primary" onClick={() => setShowCart(!showCart)} style={{ fontSize: '18px'  }}>
+          <button className="btn btn-outline-primary me-2" onClick={() => setShowCart(!showCart)} style={{ fontSize: '18px'  }}>
             🛒 Cart ({cartItems.length})
           </button>
+          <button className='btn btn-outline-primary' style={{ fontSize: '18px'  }}><Link to="/login" className='text-none'>Login</Link></button>
         </div>
       </nav>
 
